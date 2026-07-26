@@ -176,5 +176,9 @@ Restaurant GOLD — уютное место для семейного отдых
 
 <script src="script.js"></script>
 
+<a href="https://wa.me/77472280937?text=Здравствуйте!%20Хочу%20забронировать%20столик." target="_blank">
+📲 Забронировать столик
+</a>
+
 </body>
 </html>
