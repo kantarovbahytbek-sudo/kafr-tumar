@@ -1,69 +1,45 @@
 // Плавная прокрутка
+document.querySelectorAll('nav a').forEach(link => {
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
 
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        const target = document.querySelector(this.getAttribute('href'));
 
-anchor.addEventListener('click', function(e){
-
-e.preventDefault();
-
-document.querySelector(this.getAttribute('href')).scrollIntoView({
-
-behavior:'smooth'
-
+        if (target) {
+            window.scrollTo({
+                top: target.offsetTop - 80,
+                behavior: 'smooth'
+            });
+        }
+    });
 });
 
+// Анимация появления секций
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = "1";
+            entry.target.style.transform = "translateY(0)";
+        }
+    });
+}, {
+    threshold: 0.15
 });
 
+document.querySelectorAll("section").forEach(section => {
+    section.style.opacity = "0";
+    section.style.transform = "translateY(50px)";
+    section.style.transition = "all 0.8s ease";
+    observer.observe(section);
 });
 
+// Подсветка меню при прокрутке
+window.addEventListener("scroll", () => {
+    const header = document.querySelector("header");
 
-// Анимация появления
-
-const observer = new IntersectionObserver((entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show");
-
-}
-
+    if (window.scrollY > 80) {
+        header.style.background = "rgba(0,0,0,.98)";
+    } else {
+        header.style.background = "rgba(0,0,0,.9)";
+    }
 });
-
-});
-
-document.querySelectorAll(".food-card,.card,.gallery img,.banquet-content").forEach(el=>{
-
-observer.observe(el);
-
-});
-
-
-// Кнопка вверх
-
-const btn=document.createElement("button");
-
-btn.innerHTML="↑";
-
-btn.id="topBtn";
-
-document.body.appendChild(btn);
-
-window.addEventListener("scroll",()=>{
-
-btn.style.display=window.scrollY>500?"block":"none";
-
-});
-
-btn.onclick=()=>{
-
-window.scrollTo({
-
-top:0,
-
-behavior:"smooth"
-
-});
-
-};
