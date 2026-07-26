@@ -255,3 +255,16 @@ font-size:14px;
 }
 
 }
+.card ul li{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:10px 0;
+border-bottom:1px dashed #555;
+}
+
+.card span{
+color:#d4af37;
+font-weight:bold;
+font-size:18px;
+}
