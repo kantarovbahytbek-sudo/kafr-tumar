@@ -582,3 +582,37 @@ height:180px;
 }
 
 }
+.show{
+opacity:1;
+transform:translateY(0);
+}
+
+.food-card,
+.card,
+.gallery img,
+.banquet-content{
+opacity:0;
+transform:translateY(60px);
+transition:1s;
+}
+
+#topBtn{
+position:fixed;
+bottom:25px;
+right:25px;
+width:55px;
+height:55px;
+border:none;
+border-radius:50%;
+background:#d4af37;
+color:#000;
+font-size:24px;
+cursor:pointer;
+display:none;
+box-shadow:0 5px 20px rgba(0,0,0,.4);
+z-index:999;
+}
+
+#topBtn:hover{
+transform:scale(1.1);
+}
